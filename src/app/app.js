@@ -2,30 +2,59 @@ import 'babel/external-helpers';
 
 import angular from 'angular';
 import 'angular-ui-router';
+import 'angular-formly';
+import 'angular-material';
+import 'angular-animate';
+import 'angular-messages';
+import 'common/components/ng-formly-material.module'
 import 'ocLazyLoad';
 import 'common/core';
 import routing from 'common/utils/routing';
 
-let app = angular.module('demo', ['ui.router', 'oc.lazyLoad']);
+let app = angular
+  .module('demo', [
+    'ui.router',
+    'oc.lazyLoad',
+    'formly',
+    'formlyMaterial',
+    'ngMessages',
+    'ngAnimate',
+    'ngMaterial'
+  ]);
 
 app.config(routing(app));
 
-app.config(['$urlRouterProvider', '$locationProvider', '$compileProvider', '$logProvider', '$httpProvider', '$ocLazyLoadProvider', function ($urlRouterProvider, $locationProvider, $compileProvider, $logProvider, $httpProvider, $ocLazyLoadProvider) {
-  $locationProvider.html5Mode({
-    enabled: true,
-    requireBase: false
-  }).hashPrefix('!');
-  $httpProvider.useApplyAsync(true);
-  $urlRouterProvider.otherwise('/login');
+app.config([
+  '$urlRouterProvider',
+  '$locationProvider',
+  '$compileProvider',
+  '$logProvider',
+  '$httpProvider',
+  '$ocLazyLoadProvider',
+  function (
+    $urlRouterProvider,
+    $locationProvider,
+    $compileProvider,
+    $logProvider,
+    $httpProvider,
+    $ocLazyLoadProvider
+  ) {
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    }).hashPrefix('!');
+    $httpProvider.useApplyAsync(true);
+    $urlRouterProvider.otherwise('/login');
 
-  if(window.prod){
-    $logProvider.debugEnabled(false);
-    // http://ng-perf.com/2014/10/24/simple-trick-to-speed-up-your-angularjs-app-load-time/
-    $compileProvider.debugInfoEnabled(false);
+    if(window.prod){
+      $logProvider.debugEnabled(false);
+      // http://ng-perf.com/2014/10/24/simple-trick-to-speed-up-your-angularjs-app-load-time/
+      $compileProvider.debugInfoEnabled(false);
+    }
+
+    $ocLazyLoadProvider.config({ debug: false });
   }
-
-  $ocLazyLoadProvider.config({ debug: false });
-}]);
+]);
 
 angular.element(document).ready(function() {
   angular.bootstrap(document.body, [ app.name ], {

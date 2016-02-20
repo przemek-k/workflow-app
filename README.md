@@ -2,9 +2,6 @@
 
 Seed project for ES6 modules via SystemJS with ES6 syntax using Babel that lazy-load and bundle build with AngularJS.
 
-![](http://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif)
-
-
 This project does:
 
 - ES6 Syntax via Babel with source maps

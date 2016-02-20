@@ -1,2 +1,10 @@
-<h5>A form</h5>
-<input type="text" />
+<div layout="column">
+    <h2>A form</h2>
+
+    <form ng-submit="$ctrl.onSubmit()" name="$ctrl.form" novalidate>
+      <formly-form model="$ctrl.model" fields="$ctrl.fields" options="$ctrl.options" form="$ctrl.form">
+        <md-button type="submit" class="md-raised md-primary" ng-disabled="$ctrl.form.$invalid">Submit</md-button>
+        <md-button class="md-raised" ng-click="$ctrl.options.resetModel()">Reset</md-button>
+      </formly-form>
+    </form>
+</div>
