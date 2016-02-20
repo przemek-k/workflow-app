@@ -5,7 +5,7 @@ import DateModule from 'common/components/date';
 import ModalModule from 'common/components/modal';
 import UserModule from 'common/services/user';
 
-import { LoginController } from './LoginController';
+import { LoginController } from './login.controller';
 import loginTemplate from './login.tpl';
 import signupTemplate from './signup.tpl';
 import './login.css!';

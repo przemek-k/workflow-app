@@ -5,15 +5,13 @@ import angular from 'angular';
 // import dateModule from 'common/components/date';
 // import timeModule from 'common/components/time';
 
-import { UsersController } from './UsersController';
+import { UsersController } from './users.controller';
 import usersTemplate from './users.tpl';
 
 function ConfigureModule($stateProvider){
   $stateProvider.state('admin.users', {
     url: '/users',
-    templateUrl: usersTemplate.name,
-    controller: UsersController,
-    controllerAs: 'usersCtrl'
+    template: '<users></users>'
   });
 }
 
@@ -25,4 +23,8 @@ export default angular
     // selectModule.name,
     usersTemplate.name
   ])
+  .component('users', {
+    templateUrl: usersTemplate.name,
+    controller: UsersController
+  })
   .config(ConfigureModule);

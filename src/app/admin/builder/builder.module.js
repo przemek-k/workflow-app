@@ -3,7 +3,7 @@ import angular from 'angular';
 import modalModule from 'common/components/modal';
 import selectModule from 'common/components/select';
 
-import { BuilderController } from './BuilderController';
+import { BuilderController } from './builder.controller';
 import builderTemplate from './builder.tpl';
 
 function ConfigureModule($stateProvider){
@@ -17,7 +17,7 @@ function ConfigureModule($stateProvider){
 
 export default angular
   .module('admin.builder', [
-    modalModule.name, 
+    modalModule.name,
     selectModule.name,
     builderTemplate.name
   ])
