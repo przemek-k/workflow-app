@@ -8,7 +8,6 @@ import 'angular-animate';
 import 'angular-messages';
 import 'common/components/ng-formly-material.module'
 import 'ocLazyLoad';
-import 'common/core';
 import routing from 'common/utils/routing';
 
 let app = angular

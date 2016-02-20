@@ -1,7 +1,7 @@
 import angular from 'angular';
+
 import BuilderModule from 'app/admin/builder/builder.module'
 import UsersModule from 'app/admin/users/users.module'
-
 import { AdminController } from './admin.controller';
 import adminTemplate from './admin.tpl';
 

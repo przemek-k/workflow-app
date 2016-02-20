@@ -1,9 +1,5 @@
 import angular from 'angular';
 
-import { modalModule } from 'common/core';
-import popupModule from 'common/components/popup';
-import timeModule from 'common/components/time';
-
 import { DashboardController } from './dashboard.controller';
 import dashboardTemplate from './dashboard.tpl';
 
@@ -16,9 +12,6 @@ function ConfigureModule($stateProvider){
 
 export default angular
   .module('dashboard', [
-    modalModule.name,
-    popupModule.name,
-    timeModule.name,
     dashboardTemplate.name
   ])
   .component('dashboard', {
