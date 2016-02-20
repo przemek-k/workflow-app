@@ -8,6 +8,7 @@ import 'angular-animate';
 import 'angular-messages';
 import 'common/components/ng-formly-material.module'
 import 'ocLazyLoad';
+import { FastClick } from 'fastclick';
 import routing from 'common/utils/routing';
 
 let app = angular
@@ -55,10 +56,10 @@ app.config([
   }
 ]);
 
+app.run(function() { FastClick.attach(document.body); });
+
 angular.element(document).ready(function() {
-  angular.bootstrap(document.body, [ app.name ], {
-    strictDi: true
-  });
+  angular.bootstrap(document.body, [ app.name ], { strictDi: true });
 });
 
 export default app;

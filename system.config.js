@@ -74,6 +74,7 @@ System.config({
     "clean-css": "npm:clean-css@3.4.4",
     "core-js": "npm:core-js@1.1.4",
     "css": "github:systemjs/plugin-css@0.1.20",
+    "fastclick": "npm:fastclick@1.0.6",
     "json": "github:systemjs/plugin-json@0.1.0",
     "ocLazyLoad": "github:ocombe/ocLazyLoad@0.5.2/dist/ocLazyLoad",
     "ocombe/ocLazyLoad": "github:ocombe/ocLazyLoad@0.5.2",
