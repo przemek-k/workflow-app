@@ -6,12 +6,12 @@ import loginTemplate from './login.tpl';
 import signupTemplate from './signup.tpl';
 
 function ConfigureModule($stateProvider){
-  $stateProvider.state('root.login', {
+  $stateProvider.state('login', {
     url: '/login',
     template: '<login></login>'
   });
 
-  $stateProvider.state('root.login.signup', {
+  $stateProvider.state('login.signup', {
     url: '/signup',
     template: '<signup></signup>'
   });

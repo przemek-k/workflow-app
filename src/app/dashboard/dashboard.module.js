@@ -4,7 +4,7 @@ import { DashboardController } from './dashboard.controller';
 import dashboardTemplate from './dashboard.tpl';
 
 function ConfigureModule($stateProvider){
-  $stateProvider.state('root.dashboard', {
+  $stateProvider.state('app.dashboard', {
     url: '/dashboard',
     template: '<dashboard></dashboard>'
   });

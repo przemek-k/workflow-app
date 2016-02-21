@@ -5,7 +5,7 @@ import { ProcessesController } from './processes.controller';
 import processesTemplate from './processes.tpl';
 
 function ConfigureModule($stateProvider){
-  $stateProvider.state('root.processes', {
+  $stateProvider.state('app.processes', {
     url: '/processes',
     template: '<processes></processes>'
   });

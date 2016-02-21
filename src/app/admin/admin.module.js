@@ -6,7 +6,7 @@ import { AdminController } from './admin.controller';
 import adminTemplate from './admin.tpl';
 
 function ConfigureModule($stateProvider){
-  $stateProvider.state('root.admin', {
+  $stateProvider.state('app.admin', {
     url: '/admin',
     template: '<admin></admin>'
   });

@@ -4,7 +4,7 @@ import { UsersController } from './users.controller';
 import usersTemplate from './users.tpl';
 
 function ConfigureModule($stateProvider){
-  $stateProvider.state('root.admin.users', {
+  $stateProvider.state('app.admin.users', {
     url: '/users',
     template: '<users></users>'
   });

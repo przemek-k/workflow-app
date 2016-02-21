@@ -4,7 +4,7 @@ import { FormsController } from './forms.controller.js'
 import formsTemplate from './forms.tpl';
 
 function ConfigureModule($stateProvider){
-  $stateProvider.state('root.processes.forms', {
+  $stateProvider.state('app.processes.forms', {
     url: '/forms',
     template: '<forms></forms>'
   });

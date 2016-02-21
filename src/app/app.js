@@ -48,17 +48,13 @@ app.config([
       requireBase: false
     }).hashPrefix('!');
     $httpProvider.useApplyAsync(true);
-    $urlRouterProvider.otherwise('/login');
-    $stateProvider.state('root', {
+
+    $urlRouterProvider.otherwise('/processes');
+    $stateProvider.state('app', {
       abstract: true,
       controller: function($scope, $mdSidenav, $location){
         $scope.selected = null;
         $scope.menu = [
-          {
-            name: 'Login',
-            avatar: 'svg-1',
-            url: 'login'
-          },
           {
             name: 'Dashboard',
             avatar: 'svg-4',
@@ -79,9 +75,8 @@ app.config([
           $scope.selected = item;
           $location.url(item.url);
         };
-        $scope.toggleList = function() {
-          $mdSidenav('left').toggle();
-        };
+        $scope.logout = function () { $location.url('/login'); };
+        $scope.toggleList = function() { $mdSidenav('left').toggle(); };
       },
       templateUrl: appTemplate.name
     });
@@ -101,6 +96,7 @@ app.config(function($mdThemingProvider, $mdIconProvider){
   $mdIconProvider
     .defaultIconSet("dist/assets/svg/avatars.svg", 128)
     .icon("menu"       , "dist/assets/svg/menu.svg"        , 24)
+    .icon("mail"       , "dist/assets/svg/mail.svg"        , 24)
     .icon("share"      , "dist/assets/svg/share.svg"       , 24)
     .icon("google_plus", "dist/assets/svg/google_plus.svg" , 512)
     .icon("hangouts"   , "dist/assets/svg/hangouts.svg"    , 512)
