@@ -104,8 +104,8 @@ app.config(function($mdThemingProvider, $mdIconProvider){
     .icon("phone"      , "dist/assets/svg/phone.svg"       , 512);
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('brown')
-    .accentPalette('red');
+    .primaryPalette('blue')
+    .accentPalette('orange');
 });
 
 app.run(function() { FastClick.attach(document.body); });

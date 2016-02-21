@@ -11,7 +11,7 @@ function ConfigureModule($stateProvider){
     template: '<login></login>'
   });
 
-  $stateProvider.state('login.signup', {
+  $stateProvider.state('signup', {
     url: '/signup',
     template: '<signup></signup>'
   });

@@ -1,4 +1,33 @@
-<h1>Login: {{loggedin}}</h1>
+<div layout="row"
+     layout-align="center center"
+     style="min-height: 100%">
+  <form name="loginForm">
 
-<a href="#" ui-sref="login.signup">Signup</a>
-<ui-view></ui-view>
+  </form>
+  <md-whiteframe class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout="column" layout-align="center center">
+    <md-content layout-padding>
+      <md-input-container class="md-block">
+        <label>Email</label>
+        <input required type="email" name="clientEmail" ng-model="clientEmail"
+               minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+        <div ng-messages="loginForm.clientEmail.$error" role="alert">
+          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+            Your email must be between 10 and 100 characters long and look like an e-mail address.
+          </div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Password</label>
+        <input required type="password" name="clientPassword" ng-model="clientPassword"/>
+        <div ng-messages="loginForm.passwordEmail.$error" role="alert">
+          <div ng-message-exp="['required']">
+            Please enter password.
+          </div>
+        </div>
+      </md-input-container>
+      <md-button class="md-raised md-primary">Login</md-button>
+      Don't have an account?<a href="#" ui-sref="signup">Signup</a>
+      <a href="#" ui-sref="signup">Forgot your password?</a>
+    </md-content>
+  </md-whiteframe>
+</div>
