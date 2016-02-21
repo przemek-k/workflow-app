@@ -9,6 +9,7 @@ import 'angular-messages';
 import 'common/components/ng-formly-material.module'
 import 'ocLazyLoad';
 import { FastClick } from 'fastclick';
+import rootTemplate from './root.tpl';
 import routing from 'common/utils/routing';
 
 let app = angular
@@ -19,7 +20,8 @@ let app = angular
     'formlyMaterial',
     'ngMessages',
     'ngAnimate',
-    'ngMaterial'
+    'ngMaterial',
+    rootTemplate.name
   ]);
 
 app.config(routing(app));
@@ -30,6 +32,7 @@ app.config([
   '$compileProvider',
   '$logProvider',
   '$httpProvider',
+  '$stateProvider',
   '$ocLazyLoadProvider',
   function (
     $urlRouterProvider,
@@ -37,6 +40,7 @@ app.config([
     $compileProvider,
     $logProvider,
     $httpProvider,
+    $stateProvider,
     $ocLazyLoadProvider
   ) {
     $locationProvider.html5Mode({
@@ -45,6 +49,42 @@ app.config([
     }).hashPrefix('!');
     $httpProvider.useApplyAsync(true);
     $urlRouterProvider.otherwise('/login');
+    $stateProvider.state('root', {
+      abstract: true,
+      controller: function($scope, $mdSidenav, $location){
+        $scope.selected = null;
+        $scope.menu = [
+          {
+            name: 'Login',
+            avatar: 'svg-1',
+            url: 'login'
+          },
+          {
+            name: 'Admin',
+            avatar: 'svg-2',
+            url: 'admin'
+          },
+          {
+            name: 'Forms',
+            avatar: 'svg-3',
+            url: 'forms'
+          },
+          {
+            name: 'Dashboard',
+            avatar: 'svg-4',
+            url: 'dashboard'
+          }
+        ];
+        $scope.selectUser = function(item) {
+          $scope.selected = item;
+          $location.url(item.url);
+        };
+        $scope.toggleList = function() {
+          $mdSidenav('left').toggle();
+        };
+      },
+      templateUrl: rootTemplate.name
+    });
 
     if(window.prod){
       $logProvider.debugEnabled(false);
@@ -55,6 +95,22 @@ app.config([
     $ocLazyLoadProvider.config({ debug: false });
   }
 ]);
+
+app.config(function($mdThemingProvider, $mdIconProvider){
+
+  $mdIconProvider
+    .defaultIconSet("dist/assets/svg/avatars.svg", 128)
+    .icon("menu"       , "dist/assets/svg/menu.svg"        , 24)
+    .icon("share"      , "dist/assets/svg/share.svg"       , 24)
+    .icon("google_plus", "dist/assets/svg/google_plus.svg" , 512)
+    .icon("hangouts"   , "dist/assets/svg/hangouts.svg"    , 512)
+    .icon("twitter"    , "dist/assets/svg/twitter.svg"     , 512)
+    .icon("phone"      , "dist/assets/svg/phone.svg"       , 512);
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('brown')
+    .accentPalette('red');
+});
 
 app.run(function() { FastClick.attach(document.body); });
 

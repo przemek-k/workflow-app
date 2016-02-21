@@ -7,12 +7,12 @@ import signupTemplate from './signup.tpl';
 import './login.css!';
 
 function ConfigureModule($stateProvider){
-  $stateProvider.state('login', {
+  $stateProvider.state('root.login', {
     url: '/login',
     template: '<login></login>'
   });
 
-  $stateProvider.state('login.signup', {
+  $stateProvider.state('root.login.signup', {
     url: '/signup',
     template: '<signup></signup>'
   });

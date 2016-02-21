@@ -2,6 +2,14 @@
 <html lang="en" data-framework="angularjs">
   <head>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="/dist/assets/app.css">
+    <style type="text/css">
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+      }
+    </style>
+
     <meta charset=" utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -21,13 +29,7 @@
       </div>
     </noscript>
 
-    <h1>Welcome</h1>
-    <a ui-sref="login" href="#">Login</a> |
-    <a ui-sref="dashboards" href="#">Dashboard</a> |
-    <a ui-sref="forms" href="#">Forms</a> |
-    <a ui-sref="admin" href="#">Admin</a>
-
-    <ui-view class="content-area"></ui-view>
+    <ui-view></ui-view>
 
     <!-- build:dev -->
     <script src="jspm_packages/system.js"></script>

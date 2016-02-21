@@ -4,7 +4,7 @@ import { BuilderController } from './builder.controller';
 import builderTemplate from './builder.tpl';
 
 function ConfigureModule($stateProvider){
-  $stateProvider.state('admin.builder', {
+  $stateProvider.state('root.admin.builder', {
     url: '/builder',
     templateUrl: builderTemplate.name,
     controller: BuilderController,
