@@ -12,10 +12,6 @@ function ConfigureModule($stateProvider){
 
 export default angular
   .module('admin.users', [
-    // modalModule.name,
-    // dateModule.name,
-    // timeModule.name,
-    // selectModule.name,
     usersTemplate.name
   ])
   .component('users', {

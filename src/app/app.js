@@ -9,7 +9,7 @@ import 'angular-messages';
 import 'common/components/ng-formly-material.module'
 import 'ocLazyLoad';
 import { FastClick } from 'fastclick';
-import rootTemplate from './root.tpl';
+import appTemplate from './app.tpl';
 import routing from 'common/utils/routing';
 
 let app = angular
@@ -21,7 +21,7 @@ let app = angular
     'ngMessages',
     'ngAnimate',
     'ngMaterial',
-    rootTemplate.name
+    appTemplate.name
   ]);
 
 app.config(routing(app));
@@ -60,19 +60,19 @@ app.config([
             url: 'login'
           },
           {
-            name: 'Admin',
-            avatar: 'svg-2',
-            url: 'admin'
-          },
-          {
-            name: 'Forms',
-            avatar: 'svg-3',
-            url: 'forms'
-          },
-          {
             name: 'Dashboard',
             avatar: 'svg-4',
             url: 'dashboard'
+          },
+          {
+            name: 'Processes',
+            avatar: 'svg-3',
+            url: 'processes'
+          },
+          {
+            name: 'Admin',
+            avatar: 'svg-2',
+            url: 'admin'
           }
         ];
         $scope.selectUser = function(item) {
@@ -83,7 +83,7 @@ app.config([
           $mdSidenav('left').toggle();
         };
       },
-      templateUrl: rootTemplate.name
+      templateUrl: appTemplate.name
     });
 
     if(window.prod){

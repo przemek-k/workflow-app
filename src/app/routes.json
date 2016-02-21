@@ -6,8 +6,8 @@
     "src": "app/login/login.module"
   },
   {
-    "stateName": "dashboards",
-    "urlPrefix": "/dashboards",
+    "stateName": "dashboard",
+    "urlPrefix": "/dashboard",
     "type": "load",
     "src": "app/dashboard/dashboard.module"
   },
@@ -18,9 +18,9 @@
     "src": "app/admin/admin.module"
   },
   {
-    "stateName": "forms",
-    "urlPrefix": "/forms",
+    "stateName": "processes",
+    "urlPrefix": "/processes",
     "type": "load",
-    "src": "app/forms/forms.module"
+    "src": "app/processes/processes.module"
   }
 ]

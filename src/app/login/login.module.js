@@ -4,7 +4,6 @@ import UserModule from 'common/services/user';
 import { LoginController } from './login.controller';
 import loginTemplate from './login.tpl';
 import signupTemplate from './signup.tpl';
-import './login.css!';
 
 function ConfigureModule($stateProvider){
   $stateProvider.state('root.login', {
