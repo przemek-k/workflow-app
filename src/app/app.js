@@ -49,30 +49,35 @@ app.config([
     }).hashPrefix('!');
     $httpProvider.useApplyAsync(true);
 
-    $urlRouterProvider.otherwise('/processes');
+    $urlRouterProvider.otherwise('/dashboard');
     $stateProvider.state('app', {
       abstract: true,
-      controller: function($scope, $mdSidenav, $location){
-        $scope.selected = null;
+      controller: /*@ngInject*/ function($scope, $mdSidenav, $location){
+        $scope.selected = { url: '/dashboard' };
         $scope.menu = [
           {
             name: 'Dashboard',
-            avatar: 'svg-4',
-            url: 'dashboard'
+            avatar: 'dashboard',
+            url: '/dashboard'
           },
           {
             name: 'Processes',
-            avatar: 'svg-3',
-            url: 'processes'
+            avatar: 'hub',
+            url: '/processes'
+          },
+          {
+            name: 'Reports',
+            avatar: 'reports',
+            url: '/processes'
           },
           {
             name: 'Admin',
-            avatar: 'svg-2',
-            url: 'admin'
+            avatar: 'settings',
+            url: '/admin'
           }
         ];
         $scope.selectUser = function(item) {
-          $scope.selected = item;
+          $scope.selected.url = item.url;
           $location.url(item.url);
         };
         $scope.logout = function () { $location.url('/login'); };
@@ -94,18 +99,24 @@ app.config([
 app.config(function($mdThemingProvider, $mdIconProvider){
 
   $mdIconProvider
-    .defaultIconSet("dist/assets/svg/avatars.svg", 128)
-    .icon("menu"       , "dist/assets/svg/menu.svg"        , 24)
-    .icon("mail"       , "dist/assets/svg/mail.svg"        , 24)
-    .icon("share"      , "dist/assets/svg/share.svg"       , 24)
-    .icon("google_plus", "dist/assets/svg/google_plus.svg" , 512)
-    .icon("hangouts"   , "dist/assets/svg/hangouts.svg"    , 512)
-    .icon("twitter"    , "dist/assets/svg/twitter.svg"     , 512)
-    .icon("phone"      , "dist/assets/svg/phone.svg"       , 512);
+    .icon("account"     , "dist/assets/svg/account_circle.svg"       , 36)
+    .icon("cached"      , "dist/src/assets/svg/cached.svg"           , 36)
+    .icon("dashboard"   , "dist/assets/svg/dashboard.svg"            , 36)
+    .icon("hub"         , "dist/assets/svg/device_hub.svg"           , 36)
+    .icon("logout"      , "dist/assets/svg/exit_to_app.svg"          , 36)
+    .icon("face"        , "dist/assets/svg/face_black.svg"           , 36)
+    .icon("notification", "dist/assets/svg/notifications.svg"        , 36)
+    .icon("app-settings", "dist/assets/svg/settings_applications.svg", 36)
+    .icon("settings"    , "dist/assets/svg/settings.svg"             , 36)
+    .icon("menu"        , "dist/assets/svg/menu.svg"                 , 36)
+    .icon("super-user"  , "dist/assets/svg/supervisor_account.svg"   , 36)
+    .icon("reports"     , "dist/assets/svg/trending_up.svg"          , 36)
+    .icon("timeline"    , "dist/assets/svg/timeline.svg"             , 36);
 
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
-    .accentPalette('orange');
+    .accentPalette('pink')
+    .warnPalette('red');
 });
 
 app.run(function() { FastClick.attach(document.body); });
