@@ -61,14 +61,14 @@ app.config([
             url: '/dashboard'
           },
           {
-            name: 'Processes',
+            name: 'My workflows',
             avatar: 'hub',
-            url: '/processes'
+            url: '/workflows'
           },
           {
             name: 'Reports',
             avatar: 'reports',
-            url: '/processes'
+            url: '/workflows'
           },
           {
             name: 'Admin',
@@ -111,11 +111,12 @@ app.config(function($mdThemingProvider, $mdIconProvider){
     .icon("menu"        , "dist/assets/svg/menu.svg"                 , 36)
     .icon("super-user"  , "dist/assets/svg/supervisor_account.svg"   , 36)
     .icon("reports"     , "dist/assets/svg/trending_up.svg"          , 36)
+    .icon("widgets"     , "dist/assets/svg/widgets.svg"          , 36)
     .icon("timeline"    , "dist/assets/svg/timeline.svg"             , 36);
 
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
-    .accentPalette('pink')
+    .accentPalette('grey')
     .warnPalette('red');
 });
 

@@ -2,7 +2,7 @@
   <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
               md-component-id="left"
               ng-click="toggleList()" aria-label="Show Menu List"
-              md-is-locked-open="$mdMedia('gt-sm')">
+              md-is-locked-open="$mdMedia('gt-md')">
 
     <md-toolbar class="md-whiteframe-z1">
       <h3>Menu</h3>
@@ -22,17 +22,24 @@
   <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
     <md-toolbar layout="row" class="md-whiteframe-z1" layout-align="end center">
-      <md-button id="main" class="menu" hide-gt-sm ng-click="toggleList()" aria-label="Show Menu List">
+      <md-button id="main" class="menu" hide-gt-md ng-click="toggleList()" aria-label="Show Menu List">
         <md-icon md-svg-icon="menu"></md-icon>
       </md-button>
       <h3>Workflow App</h3>
+      <span>Przemyslaw</span>
+      <md-button class="md-icon-button" aria-label="Workflows">
+        <md-tooltip md-direction="bottom">
+          Workflows
+        </md-tooltip>
+        <md-icon md-svg-icon="widgets"></md-icon>
+      </md-button>
       <md-button class="md-icon-button" aria-label="Notifications">
         <md-tooltip md-direction="bottom">
           Notifications
         </md-tooltip>
         <md-icon md-svg-icon="notification"></md-icon>
       </md-button>
-      <md-button class="md-icon-button" aria-label="Account settings">
+      <md-button class="md-fab md-mini" aria-label="Account settings">
         <md-tooltip md-direction="bottom">
           Account settings
         </md-tooltip>

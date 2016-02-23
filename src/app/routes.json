@@ -18,9 +18,9 @@
     "src": "app/admin/admin.module"
   },
   {
-    "stateName": "processes",
-    "urlPrefix": "/processes",
+    "stateName": "workflows",
+    "urlPrefix": "/workflows",
     "type": "load",
-    "src": "app/processes/processes.module"
+    "src": "app/workflows/workflows.module"
   }
 ]
