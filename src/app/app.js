@@ -2,15 +2,17 @@ import 'babel/external-helpers';
 
 import angular from 'angular';
 import 'angular-ui-router';
-import 'angular-formly';
 import 'angular-material';
 import 'angular-animate';
 import 'angular-messages';
-import 'common/components/ng-formly-material.module'
+import 'angular-formly';
+import 'common/components/ng-formly-material.module';
 import 'ocLazyLoad';
 import { FastClick } from 'fastclick';
-import appTemplate from './app.tpl';
-import routing from 'common/utils/routing';
+import loginTemplate from './login/login.tpl';
+import 'ui-router-extras';
+
+var lazyLoad = {};
 
 let app = angular
   .module('demo', [
@@ -21,10 +23,9 @@ let app = angular
     'ngMessages',
     'ngAnimate',
     'ngMaterial',
-    appTemplate.name
+    'ct.ui.router.extras.future',
+    loginTemplate.name
   ]);
-
-app.config(routing(app));
 
 app.config([
   '$urlRouterProvider',
@@ -33,6 +34,7 @@ app.config([
   '$logProvider',
   '$httpProvider',
   '$stateProvider',
+  '$futureStateProvider',
   '$ocLazyLoadProvider',
   function (
     $urlRouterProvider,
@@ -41,50 +43,63 @@ app.config([
     $logProvider,
     $httpProvider,
     $stateProvider,
+    $futureStateProvider,
     $ocLazyLoadProvider
   ) {
+
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
     }).hashPrefix('!');
+
     $httpProvider.useApplyAsync(true);
 
-    $urlRouterProvider.otherwise('/dashboard');
-    $stateProvider.state('app', {
-      abstract: true,
-      controller: /*@ngInject*/ function($scope, $mdSidenav, $location){
-        $scope.selected = { url: '/dashboard' };
-        $scope.menu = [
-          {
-            name: 'Dashboard',
-            avatar: 'dashboard',
-            url: '/dashboard'
-          },
-          {
-            name: 'My workflows',
-            avatar: 'hub',
-            url: '/workflows'
-          },
-          {
-            name: 'Reports',
-            avatar: 'reports',
-            url: '/workflows'
-          },
-          {
-            name: 'Admin',
-            avatar: 'settings',
-            url: '/admin'
-          }
-        ];
-        $scope.selectUser = function(item) {
-          $scope.selected.url = item.url;
-          $location.url(item.url);
+    $urlRouterProvider.otherwise('/login');
+
+    $stateProvider.state('login', {
+      url: '/login',
+      templateUrl: loginTemplate.name,
+      controller: function($scope, $http, $location) {
+        $scope.doLogin = function() {
+
+          $http.get('./src/app/routes.json').then(function (resp) {
+            angular.forEach(resp.data, function (fstate) {
+              lazyLoad.futureStateProvider.futureState(fstate);
+
+              $location.url('/dashboard');
+            });
+          });
+
+          lazyLoad.futureStateProvider.stateFactory('load', ['$q', '$ocLazyLoad', 'futureState',
+            function ($q, $ocLazyLoad, futureState) {
+
+              var def = $q.defer();
+
+              System.import(futureState.src).then(loaded => {
+                var newModule = loaded;
+                if (!loaded.name) {
+                  var key = Object.keys(loaded);
+                  newModule = loaded[key[0]];
+                }
+
+                $ocLazyLoad.load(newModule).then(function() {
+                  def.resolve();
+                }, function() {
+                  console.log('error loading: ' + loaded.name);
+                });
+              });
+
+              return def.promise;
+            }
+          ]);
         };
-        $scope.logout = function () { $location.url('/login'); };
-        $scope.toggleList = function() { $mdSidenav('left').toggle(); };
-      },
-      templateUrl: appTemplate.name
+      }
     });
+
+    lazyLoad = {
+      stateProvider: $stateProvider,
+      futureStateProvider: $futureStateProvider
+    };
 
     if(window.prod){
       $logProvider.debugEnabled(false);
@@ -107,7 +122,7 @@ app.config(function($mdThemingProvider, $mdIconProvider){
     .icon("settings"    , "dist/assets/svg/settings.svg"             , 36)
     .icon("menu"        , "dist/assets/svg/menu.svg"                 , 36)
     .icon("reports"     , "dist/assets/svg/trending_up.svg"          , 36)
-    .icon("widgets"     , "dist/assets/svg/widgets.svg"              , 36);
+    .icon("apps"        , "dist/assets/svg/apps.svg"                 , 36);
 
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')

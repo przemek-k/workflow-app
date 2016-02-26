@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-import FormsModule from './forms/forms.module'
+import formsModule from './forms/forms.module';
 import { WorkflowsController } from './workflows.controller';
 import workflowsTemplate from './workflows.tpl';
 
@@ -14,7 +14,7 @@ function ConfigureModule($stateProvider){
 export default angular
   .module('workflows', [
     workflowsTemplate.name,
-    FormsModule
+    formsModule.name
   ])
   .component('workflows', {
     templateUrl: workflowsTemplate.name,

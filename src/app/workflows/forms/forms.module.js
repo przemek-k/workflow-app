@@ -1,10 +1,10 @@
 import angular from 'angular';
 
-import { FormsController } from './forms.controller.js'
+import { FormsController } from './forms.controller.js';
 import formsTemplate from './forms.tpl';
 
 function ConfigureModule($stateProvider){
-  $stateProvider.state('app.processes.forms', {
+  $stateProvider.state('app.workflows.forms', {
     url: '/forms',
     template: '<forms></forms>'
   });
