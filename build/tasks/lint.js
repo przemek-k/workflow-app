@@ -1,7 +1,7 @@
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
-var paths = require('../paths');
+const gulp = require('gulp');
+const jshint = require('gulp-jshint');
+const stylish = require('jshint-stylish');
+const paths = require('../paths');
 
 gulp.task('lint', function () {
   return gulp.src(paths.source)

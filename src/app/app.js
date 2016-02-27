@@ -11,7 +11,7 @@ import 'npm:ui-router-extras@0.0.14/release/modular/ct-ui-router-extras.future';
 import 'npm:ui-router-extras@0.0.14/release/modular/ct-ui-router-extras.core';
 import loginTemplate from './login/login.tpl';
 import signupTemplate from './login/signup.tpl';
-import { FastClick } from 'fastclick';
+//import { FastClick } from 'fastclick';
 import { themeConfig } from 'app/config/theme-config';
 import { routeConfig } from 'app/config/route-config';
 import { debugConfig } from 'app/config/debug-config';

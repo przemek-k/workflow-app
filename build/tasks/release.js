@@ -1,9 +1,9 @@
-var gulp = require('gulp');
-var insert = require('gulp-insert');
-var concatFile = require('gulp-concat');
-var runSequence = require('run-sequence');
-var routeBundler = require('systemjs-route-bundler');
-var paths = require('../paths');
+const gulp = require('gulp');
+const insert = require('gulp-insert');
+const concatFile = require('gulp-concat');
+const runSequence = require('run-sequence');
+const routeBundler = require('systemjs-route-bundler');
+const paths = require('../paths');
 
 gulp.task('cache-bust', function () {
   var cacheBust = "var systemLocate = System.locate; System.locate = function(load) { var cacheBust = '?bust=' + " + Math.round(new Date() / 1000) +"; return Promise.resolve(systemLocate.call(this, load)).then(function(address) { if (address.indexOf('bust') > -1 || address.indexOf('css') > -1 || address.indexOf('json') > -1) return address; return address + cacheBust; });}\n"

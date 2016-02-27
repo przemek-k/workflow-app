@@ -1,5 +1,5 @@
-var gulp = require('gulp');
-var paths = require('../paths');
+const gulp = require('gulp');
+const paths = require('../paths');
 
 gulp.task('move', function () {
   var srcPaths = [

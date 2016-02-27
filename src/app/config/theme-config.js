@@ -1,3 +1,5 @@
+import theme from './theme.json!';
+
 export /*@ngInject*/ function themeConfig($mdThemingProvider, $mdIconProvider){
 
   $mdIconProvider
@@ -12,9 +14,9 @@ export /*@ngInject*/ function themeConfig($mdThemingProvider, $mdIconProvider){
     .icon("chat"        , "dist/assets/svg/chat_bubble_outline.svg"  , 36)
     .icon("apps"        , "dist/assets/svg/apps.svg"                 , 36);
 
-  //Todo parametrizing theme
-  $mdThemingProvider.theme('default')
-    .primaryPalette('orange')
-    .accentPalette('grey')
-    .warnPalette('red');
+  $mdThemingProvider
+    .theme('default')
+    .primaryPalette(theme.primaryPalette)
+    .accentPalette(theme.accentPalette)
+    .warnPalette(theme.warnPalette);
 }

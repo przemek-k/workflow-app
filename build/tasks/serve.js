@@ -1,6 +1,6 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var historyApiFallback = require('connect-history-api-fallback');
+const gulp = require('gulp');
+const browserSync = require('browser-sync');
+const historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('serve', ['watch'], function (done) {
   browserSync({

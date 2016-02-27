@@ -1,6 +1,6 @@
-var gulp = require('gulp');
-var paths = require('../paths');
-var browserSync = require('browser-sync');
+const gulp = require('gulp');
+const paths = require('../paths');
+const browserSync = require('browser-sync');
 
 function changed(event) {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');

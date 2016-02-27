@@ -1,5 +1,5 @@
-var gulp = require('gulp');
-var replace = require('gulp-replace-task');
+const gulp = require('gulp');
+const replace = require('gulp-replace-task');
 
 gulp.task('replace', function(){
   return gulp.src('./index.html')

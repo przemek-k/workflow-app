@@ -1,7 +1,7 @@
-var gulp = require('gulp');
-var karma = require('karma').server;
-var gulp_protractor = require("gulp-protractor");
-var paths = require('../paths');
+const gulp = require('gulp');
+const karma = require('karma').server;
+const gulp_protractor = require("gulp-protractor");
+const paths = require('../paths');
 
 gulp.task('test', ['build'], function(done) {
   karma.start({

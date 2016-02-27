@@ -1,24 +1,40 @@
-var gulp = require('gulp');
-var changed = require('gulp-changed');
-var plumber = require('gulp-plumber');
-var babel = require('gulp-babel');
-var sourcemaps = require('gulp-sourcemaps');
-var ngAnnotate = require('gulp-ng-annotate');
-var sass = require('gulp-sass');
-var htmlMin = require('gulp-minify-html');
-var ngHtml2Js = require("gulp-ng-html2js");
-var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
+const gulp = require('gulp');
+const changed = require('gulp-changed');
+const plumber = require('gulp-plumber');
+const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
+const ngAnnotate = require('gulp-ng-annotate');
+const sass = require('gulp-sass');
+const htmlMin = require('gulp-minify-html');
+const ngHtml2Js = require("gulp-ng-html2js");
+const runSequence = require('run-sequence');
+const browserSync = require('browser-sync');
+const Firebase = require("firebase");
+const fs = require('fs');
 
-var paths = require('../paths');
-var compilerOptions = require('../babelOptions');
+const paths = require('../paths');
+const compilerOptions = require('../babelOptions');
 
 gulp.task('build', function (callback) {
   return runSequence(
     'clean',
-    ['sass', 'html', 'es6', 'move'],
+    ['theme', 'sass', 'html', 'es6', 'move'],
     callback
   );
+});
+
+gulp.task('theme', function () {
+  //TODO this needs to be parametrized
+  var ref = new Firebase("https://glowing-fire-3914.firebaseio.com/theme");
+
+  ref.on("value", function(snapshot) {
+    var val = JSON.stringify(snapshot.val());
+    fs.writeFile('dist/app/config/theme.json', val, (err) => {
+      if (err) throw err;
+    });
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
 });
 
 gulp.task('es6', function () {
