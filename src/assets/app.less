@@ -8,45 +8,21 @@
   width: 36px;
 }
 
-
-md-toolbar h3 {
-  margin: auto;
-  font-weight: 500;
+md-toolbar {
+  h3 {
+    margin: auto;
+    font-weight: 500;
+  }
+  &.wf-top { min-height: 56px; }
 }
 
 /* Sidenav area */
 
-md-list-item > button {
-  width:100%;
-  text-align:left !important;
-  height:70px;;
-}
-
-md-icon.avatar {
-  margin-right: 20px;
-}
-
-  md-list .md-button.selected {
-    color: #03a9f4;
-  }
-
-
-button#main {
-  margin-bottom: 10px;
-}
-
-md-sidenav > md-toolbar {
-  height:64px;
-}
-
-md-list-item {
-  overflow: hidden;
-}
-
 /* Primary content area */
 
-
 #content  {
+  max-height: calc(100% - 56px);
+  overflow: scroll;
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 5px;

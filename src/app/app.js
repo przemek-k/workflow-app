@@ -37,8 +37,8 @@ export default angular
   .config(debugConfig)
   .config(routeConfig)
   .config(themeConfig)
-  .config(/*@ngInject*/ function ($httpProvider) { $httpProvider.useApplyAsync(true); })
-  .run(function() { FastClick.attach(document.body); });
+  .config(/*@ngInject*/ function ($httpProvider) { $httpProvider.useApplyAsync(true); });
+  //.run(function() { FastClick.attach(document.body); });
 
 angular.element(document).ready(function() {
   angular.bootstrap(document.body, [ 'workflow' ], { strictDi: true });

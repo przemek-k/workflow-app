@@ -14,7 +14,7 @@ export /*@ngInject*/ function themeConfig($mdThemingProvider, $mdIconProvider){
 
   //Todo parametrizing theme
   $mdThemingProvider.theme('default')
-    .primaryPalette('blue')
+    .primaryPalette('orange')
     .accentPalette('grey')
     .warnPalette('red');
 }
