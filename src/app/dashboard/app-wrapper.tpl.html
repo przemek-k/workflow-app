@@ -11,7 +11,8 @@
     <md-list>
       <md-list-item ng-repeat="item in menu" ng-click="selectUser(item)">
         <md-icon md-svg-icon="{{item.stateName}}"></md-icon>
-        <p>{{item.name | uppercase}}</p>
+        <p>{{item.stateName | uppercase}}</p>
+        <md-icon md-svg-icon="arrow"></md-icon>
         <md-divider></md-divider>
       </md-list-item>
     </md-list>
