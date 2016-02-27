@@ -2,7 +2,12 @@ import loginTemplate from '../login/login.tpl';
 
 var lazyLoad = {};
 
-export /*@ngInject*/ function routeConfig($urlRouterProvider, $stateProvider, $futureStateProvider, $locationProvider){
+export /*@ngInject*/ function routeConfig(
+  $urlRouterProvider,
+  $stateProvider,
+  $futureStateProvider,
+  $locationProvider
+) {
 
   $locationProvider.html5Mode({
     enabled: true,
@@ -14,16 +19,22 @@ export /*@ngInject*/ function routeConfig($urlRouterProvider, $stateProvider, $f
   $stateProvider.state('login', {
     url: '/login',
     templateUrl: loginTemplate.name,
-    controller: /*@ngInject*/ function($scope, $http, $location) {
+    controller: /*@ngInject*/ function($scope, $http, $location, $firebaseArray, $log) {
       $scope.doLogin = function() {
+        //Todo app needs to be parametrized
+        var ref = new Firebase("https://glowing-fire-3914.firebaseio.com/userRoutes");
 
-        $http.get('./src/app/routes.json').then(function (resp) {
-          angular.forEach(resp.data, function (fstate) {
-            lazyLoad.futureStateProvider.futureState(fstate);
-
+        $scope.messages = $firebaseArray(ref);
+        $scope.messages.$loaded()
+          .then(function () {
+            $scope.messages.forEach(function (fstate) {
+              lazyLoad.futureStateProvider.futureState(fstate);
+            });
             $location.url('/dashboard');
+          })
+          .catch(function(err) {
+            $log.error(err);
           });
-        });
 
         lazyLoad.futureStateProvider.stateFactory('load', ['$q', '$ocLazyLoad', 'futureState',
           function ($q, $ocLazyLoad, futureState) {

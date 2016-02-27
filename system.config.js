@@ -57,6 +57,12 @@ System.config({
       "deps": [
         "api-check"
       ]
+    },
+    "github:firebase/angularfire@1.1.4": {
+      "deps": [
+        "angular",
+        "firebase"
+      ]
     }
   },
 
@@ -68,6 +74,7 @@ System.config({
     "angular-messages": "github:angular/bower-angular-messages@1.5.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.5.0",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
+    "angularfire": "github:firebase/angularfire@1.1.4",
     "api-check": "npm:api-check@7.5.5",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
@@ -75,6 +82,7 @@ System.config({
     "core-js": "npm:core-js@1.1.4",
     "css": "github:systemjs/plugin-css@0.1.20",
     "fastclick": "npm:fastclick@1.0.6",
+    "firebase": "github:firebase/firebase-bower@2.4.1",
     "json": "github:systemjs/plugin-json@0.1.0",
     "ocLazyLoad": "github:ocombe/ocLazyLoad@0.5.2/dist/ocLazyLoad",
     "ocombe/ocLazyLoad": "github:ocombe/ocLazyLoad@0.5.2",

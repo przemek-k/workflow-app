@@ -8,12 +8,15 @@ import 'common/components/ng-formly-material.module';
 import 'angular-messages';
 import 'angular-animate';
 import 'angular-material';
-import 'ui-router-extras'; //Todo load only future states
-import { FastClick } from 'fastclick';
+import 'npm:ui-router-extras@0.0.14/release/modular/ct-ui-router-extras.future';
+import 'npm:ui-router-extras@0.0.14/release/modular/ct-ui-router-extras.core';
 import loginTemplate from './login/login.tpl';
+import { FastClick } from 'fastclick';
 import { themeConfig } from 'app/config/theme-config';
 import { routeConfig } from 'app/config/route-config';
 import { debugConfig } from 'app/config/debug-config';
+import 'firebase';
+import 'angularfire';
 
 export default angular
   .module('workflow', [
@@ -25,6 +28,7 @@ export default angular
     'ngAnimate',
     'ngMaterial',
     'ct.ui.router.extras.future',
+    'firebase',
     loginTemplate.name
   ])
   .config(debugConfig)
