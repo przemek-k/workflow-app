@@ -1,11 +1,5 @@
 [
   {
-    "stateName": "login",
-    "urlPrefix": "/login",
-    "type": "load",
-    "src": "app/login/login.module"
-  },
-  {
     "stateName": "dashboard",
     "urlPrefix": "/dashboard",
     "type": "load",
@@ -16,6 +10,12 @@
     "urlPrefix": "/admin",
     "type": "load",
     "src": "app/admin/admin.module"
+  },
+  {
+    "stateName": "reports",
+    "urlPrefix": "/reports",
+    "type": "load",
+    "src": "app/reports/reports.module"
   },
   {
     "stateName": "workflows",

@@ -11,7 +11,7 @@
     <md-list>
       <md-list-item ng-repeat="item in menu">
         <md-button ng-click="selectUser(item)" ng-class="{'md-primary' : item.url === selected.url }">
-          <md-icon md-svg-icon="{{item.avatar}}" class="avatar"></md-icon>
+          <md-icon md-svg-icon="{{item.stateName}}" class="avatar"></md-icon>
           {{item.name}}
         </md-button>
       </md-list-item>
@@ -26,7 +26,12 @@
         <md-icon md-svg-icon="menu"></md-icon>
       </md-button>
       <h3>Workflow App</h3>
-      <span>Przemyslaw</span>
+      <md-button class="md-icon-button" aria-label="Chat">
+        <md-tooltip md-direction="bottom">
+          Chat
+        </md-tooltip>
+        <md-icon md-svg-icon="chat"></md-icon>
+      </md-button>
       <md-button class="md-icon-button" aria-label="Workflow library">
         <md-tooltip md-direction="bottom">
           Workflow Library
@@ -39,7 +44,7 @@
         </md-tooltip>
         <md-icon md-svg-icon="notification"></md-icon>
       </md-button>
-      <md-button class="md-fab md-mini" aria-label="Account settings">
+      <md-button class="md-icon-button" aria-label="Account settings">
         <md-tooltip md-direction="bottom">
           Account Settings
         </md-tooltip>

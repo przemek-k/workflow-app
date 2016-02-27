@@ -1,4 +1,5 @@
 import loginTemplate from '../login/login.tpl';
+import signupTemplate from '../login/signup.tpl';
 
 var lazyLoad = {};
 
@@ -19,22 +20,21 @@ export /*@ngInject*/ function routeConfig(
   $stateProvider.state('login', {
     url: '/login',
     templateUrl: loginTemplate.name,
-    controller: /*@ngInject*/ function($scope, $http, $location, $firebaseArray, $log) {
+    controller: /*@ngInject*/ function($scope, $http, $location, $firebaseArray, $log, CurrentUser) {
       $scope.doLogin = function() {
         //Todo app needs to be parametrized
         var ref = new Firebase("https://glowing-fire-3914.firebaseio.com/userRoutes");
 
-        $scope.messages = $firebaseArray(ref);
-        $scope.messages.$loaded()
+        $scope.userRoutes = $firebaseArray(ref);
+        $scope.userRoutes.$loaded()
           .then(function () {
-            $scope.messages.forEach(function (fstate) {
+            $scope.userRoutes.forEach(function (fstate) {
               lazyLoad.futureStateProvider.futureState(fstate);
             });
+            CurrentUser.setUserRoutes($scope.userRoutes);
             $location.url('/dashboard');
           })
-          .catch(function(err) {
-            $log.error(err);
-          });
+          .catch(function(err) { $log.error(err); });
 
         lazyLoad.futureStateProvider.stateFactory('load', ['$q', '$ocLazyLoad', 'futureState',
           function ($q, $ocLazyLoad, futureState) {
@@ -60,6 +60,11 @@ export /*@ngInject*/ function routeConfig(
         ]);
       };
     }
+  });
+
+  $stateProvider.state('signup', {
+    url: '/signup',
+    templateUrl: signupTemplate.name
   });
 
   lazyLoad = {

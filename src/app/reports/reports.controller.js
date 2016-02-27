@@ -1,8 +1,8 @@
-export class LoginController{
+export class ReportsController{
 
   /*@ngInject*/
   constructor($scope){
-    console.log('login!');
+    console.log('reports!');
     //$scope.loggedin = false;
     //
     //$scope.$watch('theme', function(newVal, oldVal, ev){

@@ -1,22 +1,11 @@
 import angular from 'angular';
 
-class CurrentUser{
-  /*@ngInject*/
-  constructor($q){
-    this.$q = $q;
-  }
-
-  getUser(){
-    var deferred = $q.defer();
-
-    deferred.resolve({
-      name: 'Panda'
-    });
-
-    return deferred.promise;
-  }
-};
-
 export default angular
   .module('user', [])
-  .factory('CurrentUser', CurrentUser);
+  .factory('CurrentUser', /*@ngInject*/ function() {
+    var userRoutes = [];
+    return {
+      setUserRoutes: function(routes) { userRoutes = routes; },
+      getUserRoutes: function() { return userRoutes; }
+    };
+});

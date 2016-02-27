@@ -2,43 +2,22 @@ import angular from 'angular';
 
 import { DashboardController } from './dashboard.controller';
 import dashboardTemplate from './dashboard.tpl';
-import appTemplate from '../app.tpl';
+import appWrapperTemplate from './app-wrapper.tpl';
 
 function ConfigureModule($stateProvider){
   $stateProvider.state('app', {
     abstract: true,
-    controller: /*@ngInject*/ function($scope, $mdSidenav, $location){
+    controller: /*@ngInject*/ function($scope, $mdSidenav, $location, CurrentUser){
       $scope.selected = { url: '/dashboard' };
-      $scope.menu = [
-        {
-          name: 'Dashboard',
-          avatar: 'dashboard',
-          url: '/dashboard'
-        },
-        {
-          name: 'My workflows',
-          avatar: 'hub',
-          url: '/workflows'
-        },
-        {
-          name: 'Reports',
-          avatar: 'reports',
-          url: '/workflows'
-        },
-        {
-          name: 'Admin',
-          avatar: 'settings',
-          url: '/admin'
-        }
-      ];
+      $scope.menu = CurrentUser.getUserRoutes();
       $scope.selectUser = function(item) {
-        $scope.selected.url = item.url;
-        $location.url(item.url);
+        $scope.selected.url = item.urlPrefix;
+        $location.url(item.urlPrefix);
       };
       $scope.logout = function () { $location.url('/login'); };
       $scope.toggleList = function() { $mdSidenav('left').toggle(); };
     },
-    templateUrl: appTemplate.name
+    templateUrl: appWrapperTemplate.name
   });
 
   $stateProvider.state('app.dashboard', {
@@ -50,7 +29,7 @@ function ConfigureModule($stateProvider){
 export default angular
   .module('dashboard', [
     dashboardTemplate.name,
-    appTemplate.name
+    appWrapperTemplate.name
   ])
   .component('dashboard', {
     templateUrl: dashboardTemplate.name,
