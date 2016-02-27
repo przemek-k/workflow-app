@@ -98,6 +98,9 @@ System.config({
     "github:angular/bower-angular-aria@1.5.0": {
       "angular": "github:angular/bower-angular@1.5.0"
     },
+    "github:angular/bower-angular-messages@1.5.0": {
+      "angular": "github:angular/bower-angular@1.5.0"
+    },
     "github:angular/bower-angular-mocks@1.5.0": {
       "angular": "github:angular/bower-angular@1.5.0"
     },
