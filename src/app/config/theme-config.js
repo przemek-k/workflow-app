@@ -12,11 +12,12 @@ export /*@ngInject*/ function themeConfig($mdThemingProvider, $mdIconProvider){
     .icon("menu"        , "dist/assets/svg/menu.svg"                 , 36)
     .icon("reports"     , "dist/assets/svg/equalizer.svg"            , 36)
     .icon("chat"        , "dist/assets/svg/chat_bubble_outline.svg"  , 36)
+    .icon("arrow"       , "dist/assets/svg/arrow_down.svg"           , 36)
     .icon("apps"        , "dist/assets/svg/apps.svg"                 , 36);
 
   $mdThemingProvider
     .theme('default')
     .primaryPalette(theme.primaryPalette)
     .accentPalette(theme.accentPalette)
-    .warnPalette(theme.warnPalette);
+    .warnPalette('red');
 }

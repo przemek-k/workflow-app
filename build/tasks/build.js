@@ -9,8 +9,6 @@ const htmlMin = require('gulp-minify-html');
 const ngHtml2Js = require("gulp-ng-html2js");
 const runSequence = require('run-sequence');
 const browserSync = require('browser-sync');
-const Firebase = require("firebase");
-const fs = require('fs');
 
 const paths = require('../paths');
 const compilerOptions = require('../babelOptions');
@@ -21,20 +19,6 @@ gulp.task('build', function (callback) {
     ['theme', 'sass', 'html', 'es6', 'move'],
     callback
   );
-});
-
-gulp.task('theme', function () {
-  //TODO this needs to be parametrized
-  var ref = new Firebase("https://glowing-fire-3914.firebaseio.com/theme");
-
-  ref.on("value", function(snapshot) {
-    var val = JSON.stringify(snapshot.val());
-    fs.writeFile('dist/app/config/theme.json', val, (err) => {
-      if (err) throw err;
-    });
-  }, function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
-  });
 });
 
 gulp.task('es6', function () {

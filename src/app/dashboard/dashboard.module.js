@@ -3,6 +3,7 @@ import angular from 'angular';
 import { DashboardController } from './dashboard.controller';
 import dashboardTemplate from './dashboard.tpl';
 import appWrapperTemplate from './app-wrapper.tpl';
+import './app-wrapper.css!'
 
 function ConfigureModule($stateProvider){
   $stateProvider.state('app', {

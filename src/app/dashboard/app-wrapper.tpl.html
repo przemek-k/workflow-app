@@ -9,11 +9,10 @@
     </md-toolbar>
 
     <md-list>
-      <md-list-item ng-repeat="item in menu">
-        <md-button ng-click="selectUser(item)" ng-class="{'md-primary' : item.url === selected.url }">
-          <md-icon md-svg-icon="{{item.stateName}}" class="avatar"></md-icon>
-          {{item.name}}
-        </md-button>
+      <md-list-item ng-repeat="item in menu" ng-click="selectUser(item)">
+        <md-icon md-svg-icon="{{item.stateName}}"></md-icon>
+        <p>{{item.name | uppercase}}</p>
+        <md-divider></md-divider>
       </md-list-item>
     </md-list>
 
