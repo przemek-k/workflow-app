@@ -3,24 +3,114 @@
     "stateName": "dashboard",
     "urlPrefix": "/dashboard",
     "type": "load",
-    "src": "app/dashboard/dashboard.module"
-  },
-  {
-    "stateName": "admin",
-    "urlPrefix": "/admin",
-    "type": "load",
-    "src": "app/admin/admin.module"
-  },
-  {
-    "stateName": "reports",
-    "urlPrefix": "/reports",
-    "type": "load",
-    "src": "app/reports/reports.module"
+    "interactionType": "link",
+    "src": "app/dashboard/dashboard.module",
+    "order": "1",
+    "children": []
   },
   {
     "stateName": "workflows",
     "urlPrefix": "/workflows",
     "type": "load",
-    "src": "app/workflows/workflows.module"
+    "interactionType": "toggle",
+    "src": "app/workflows/workflows.module",
+    "order": "2",
+    "children": [
+      {
+        "stateName": "Employee onboarding",
+        "urlPrefix": "/workflows",
+        "order": "1"
+      },
+      {
+        "stateName": "Vacation request",
+        "urlPrefix": "/workflows",
+        "order": "2"
+      },
+      {
+        "stateName": "Purchase order",
+        "urlPrefix": "/workflows",
+        "order": "3"
+      }
+    ]
+  },
+  {
+    "stateName": "reports",
+    "urlPrefix": "/reports",
+    "type": "load",
+    "interactionType": "toggle",
+    "src": "app/reports/reports.module",
+    "order": "3",
+    "children": [
+      {
+        "stateName": "Initiated items",
+        "urlPrefix": "/reports",
+        "order": "1"
+      },
+      {
+        "stateName": "Items I worked on",
+        "urlPrefix": "/reports",
+        "order": "2"
+      },
+      {
+        "stateName": "Shared reports",
+        "urlPrefix": "/reports",
+        "order": "3"
+      }
+    ]
+  },
+  {
+    "stateName": "admin",
+    "urlPrefix": "/admin",
+    "type": "load",
+    "interactionType": "toggle",
+    "src": "app/admin/admin.module",
+    "order": "4",
+    "children": [
+      {
+        "stateName": "Pending access requests",
+        "urlPrefix": "/admin",
+        "order": "1"
+      },
+      {
+        "stateName": "User management",
+        "urlPrefix": "/admin",
+        "order": "2"
+      },
+      {
+        "stateName": "Global settings",
+        "urlPrefix": "/admin",
+        "order": "3"
+      },
+      {
+        "stateName": "Preferences",
+        "urlPrefix": "/admin",
+        "order": "4"
+      },
+      {
+        "stateName": "Google drive",
+        "urlPrefix": "/admin",
+        "order": "5"
+      },
+      {
+        "stateName": "Process administration",
+        "urlPrefix": "/admin",
+        "order": "6"
+      },
+      {
+        "stateName": "Web services",
+        "urlPrefix": "/admin",
+        "order": "7"
+      },
+      {
+        "stateName": "API access",
+        "urlPrefix": "/admin",
+        "order": "8"
+      },
+      {
+        "stateName": "Trial plan",
+        "urlPrefix": "/admin",
+        "order": "9"
+      }
+    ]
   }
 ]

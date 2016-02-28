@@ -1,28 +1,41 @@
 <div layout="row" style="height: 100%">
+
   <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
-              md-component-id="left"
-              ng-click="toggleList()" aria-label="Show Menu List"
+              md-component-id="left" hide-print
+              ng-click="$ctrl.toggleSidenav()" aria-label="Show Menu List"
               md-is-locked-open="$mdMedia('gt-md')">
 
-    <md-toolbar class="md-whiteframe-z1 wf-top">
-      <h3>Menu</h3>
-    </md-toolbar>
+    <header class="nav-header">
+      <a ng-href="/" class="logo" href="/">
+        <img src="dist/assets/svg/angular-logo.svg" alt="Angular Logo">
+      </a>
+    </header>
 
-    <md-list>
-      <md-list-item ng-repeat="item in menu" ng-click="selectUser(item)">
-        <md-icon md-svg-icon="{{item.stateName}}"></md-icon>
-        <p>{{item.stateName | uppercase}}</p>
-        <md-icon md-svg-icon="arrow"></md-icon>
-        <md-divider></md-divider>
-      </md-list-item>
-    </md-list>
+    <md-content flex role="navigation">
+      <ul class="menu">
+        <li ng-repeat="section in $ctrl.menu"
+            class="parent-list-item"
+            ng-class="{'parentActive' : $ctrl.isSectionSelected(section)}">
+
+          <menu-link section="section" ng-if="section.interactionType === 'link' && !section.hidden"></menu-link>
+
+          <menu-toggle section="section" ng-if="section.interactionType === 'toggle' && !section.hidden"></menu-toggle>
+
+          <ul ng-if="section.children && section.toggled" class="menu-nested-list">
+            <li ng-repeat="child in section.children" ng-class="{'childActive' : $ctrl.isSectionSelected(child)}">
+              <menu-link section="child"></menu-link>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </md-content>
 
   </md-sidenav>
 
   <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
     <md-toolbar layout="row" class="md-whiteframe-z1 wf-top" layout-align="end center">
-      <md-button class="md-icon-button" id="main" class="menu" hide-gt-md ng-click="toggleList()" aria-label="Show Menu List">
+      <md-button class="md-icon-button" id="main" class="menu" hide-gt-md ng-click="$ctrl.toggleSidenav()" aria-label="Show Menu List">
         <md-icon md-svg-icon="menu"></md-icon>
       </md-button>
       <h3 hide-gt-xs>&nbsp;</h3>
@@ -45,18 +58,12 @@
         </md-tooltip>
         <md-icon md-svg-icon="notification"></md-icon>
       </md-button>
-      <md-button ng-click="logout()" class="md-icon-button" aria-label="Account settings">
+      <md-button ng-click="$ctrl.logout()" class="md-icon-button" aria-label="Account settings">
         <md-tooltip md-direction="bottom">
           Account Settings
         </md-tooltip>
         <md-icon md-svg-icon="account"></md-icon>
       </md-button>
-      <!--<md-button ng-click="logout()" class="md-icon-button" aria-label="Logout">-->
-        <!--<md-tooltip md-direction="bottom">-->
-          <!--Logout-->
-        <!--</md-tooltip>-->
-        <!--<md-icon md-svg-icon="logout"></md-icon>-->
-      <!--</md-button>-->
     </md-toolbar>
 
     <md-content flex id="content" layout-padding>

@@ -1,0 +1,9 @@
+<md-button
+  ng-class="{'active' : $ctrl.isPageSelected()}"
+  ng-href="{{::$ctrl.section.urlPrefix}}"
+  ng-click="$ctrl.focusSection()">
+  {{::$ctrl.section.stateName}}
+  <span class="_md-visually-hidden" ng-if="$ctrl.isPageSelected()">
+    current page
+  </span>
+</md-button>
